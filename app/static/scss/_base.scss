@@ -22,6 +22,10 @@ a {
 main {
    max-width: 1000px;
    margin: 0 auto;
+   padding-top: 20px;
+}
+header {
+   background: #111;
 }
 nav {
    max-width: 1000px;
@@ -36,6 +40,20 @@ nav {
    ul {
       display: flex;
    }
+}
+
+.msg {
+   max-width: 700px;
+   padding: 10px;
+   border-radius: 5px;
+   text-align: center;
+   font-size: 0.9rem;
+   border: 1px solid rgba(#fff, 0.2);
+   margin: 0 auto 5px;
+}
+
+.msg.danger {
+   border: 1px solid orangered;
 }
 
 /*■■■■■■■■■■■■■■■■■■■■■■ Register form */

@@ -1,5 +1,4 @@
-from flask import Blueprint, redirect, render_template
-from flask.helpers import url_for
+from flask import Blueprint, url_for, redirect, render_template, flash
 from app.forms import RegisterForm
 from app.models import Item, User
 from app import db
@@ -32,6 +31,6 @@ def show_register():
 
 	if form.errors != {}:
 		for err_msg in form.errors.values():
-			print(f'Validation form error: {err_msg}')
+			flash(f'There was an error creating the user: {err_msg}', category='danger')
 	
 	return render_template('register.html', form=form)
