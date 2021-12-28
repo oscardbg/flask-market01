@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+<!-- . -->
+{% block title %}Register | Market {% endblock %}
+<!-- . -->
+{% block main %}
+<h1>Register User</h1>
+<form method="post" class="frm-rgs">
+   <!--  -->
+   {{ form.username.label() }}
+   <!--  -->
+   {{ form.username }}
+   <!--  -->
+   {{ form.email.label() }}
+   <!--  -->
+   {{ form.email }}
+   <!--  -->
+   {{ form.password1.label() }}
+   <!--  -->
+   {{ form.password1 }}
+   <!--  -->
+   {{ form.password2.label() }}
+   <!--  -->
+   {{ form.password2 }}
+   <!--  -->
+   {{ form.submit(class='btn') }}
+</form>
+{% endblock %}
+<!-- . -->
+<!-- . -->

@@ -11,6 +11,21 @@
       <title>{% block title %}{% endblock %}</title>
    </head>
    <body>
+      <header>
+         <nav>
+            <ul>
+               <li><a href="/">Market App</a></li>
+               <li><a href="/">Home</a></li>
+               <li><a href="">Market</a></li>
+            </ul>
+            <ul>
+               <li><a href="">Login </a></li>
+               <li>
+                  <a href="{{ url_for('views.show_register') }}">Register</a>
+               </li>
+            </ul>
+         </nav>
+      </header>
       <main>{% block main %}{% endblock %}</main>
    </body>
 </html>
