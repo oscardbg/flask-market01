@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+<!-- . -->
+{% block title %}Store | Market {% endblock %}
+<!-- . -->
+{% block main %}
+<h1>Market Webpage</h1>
+{% if items %}
+<ul class="lst-items">
+   {% for item in items %}
+   <li>
+      <p>{{ item.name }}</p>
+      <p>{{ item.price }}</p>
+      <p>{{ item.description }}</p>
+   </li>
+   {% endfor %} {% else %}
+   <h3>There are no items in the market</h3>
+</ul>
+{% endif %} {% endblock %}
+<!-- . -->
+<!-- . -->

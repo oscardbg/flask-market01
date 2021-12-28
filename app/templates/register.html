@@ -4,7 +4,8 @@
 <!-- . -->
 {% block main %}
 <h1>Register User</h1>
-<form method="post" class="frm-rgs">
+<form method="POST" class="frm-rgs">
+   {{ form.hidden_tag() }}
    <!--  -->
    {{ form.username.label() }}
    <!--  -->
