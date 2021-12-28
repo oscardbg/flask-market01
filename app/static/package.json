@@ -1,0 +1,16 @@
+{
+   "name": "static",
+   "version": "1.0.0",
+   "description": "",
+   "main": "index.js",
+   "scripts": {
+      "sdev": "sass -w scss:css -s compressed --no-source-map",
+      "sprd": "sass scss:css -s compressed --no-source-map"
+   },
+   "keywords": [],
+   "author": "",
+   "license": "ISC",
+   "dependencies": {
+      "sass": "^1.45.1"
+   }
+}
