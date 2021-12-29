@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+<!-- . -->
+{% block title %}Login | Market {% endblock %}
+<!-- . -->
+{% block main %}
+<h1>User Login</h1>
+<form method="POST" class="frm-rgs">
+   {{ form.hidden_tag() }}
+   <!--  -->
+   {{ form.username.label() }}
+   <!--  -->
+   {{ form.username }}
+   <!--  -->
+   {{ form.password.label() }}
+   <!--  -->
+   {{ form.password }}
+   <!--  -->
+   {{ form.submit(class='btn') }}
+</form>
+<p>
+   Don't have an account,
+   <a href="{{ url_for('views.show_register') }}">sign up please...</a>
+</p>
+{% endblock %}
+<!-- . -->
+<!-- . -->

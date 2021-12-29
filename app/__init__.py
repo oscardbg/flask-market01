@@ -1,5 +1,7 @@
 from flask_admin.contrib.sqla import ModelView
 from flask_sqlalchemy import SQLAlchemy
+from flask_login import LoginManager
+from flask_bcrypt import Bcrypt
 from flask_admin import Admin
 from app.config import Config
 from os.path import exists
@@ -8,10 +10,16 @@ from flask import Flask
 db = SQLAlchemy()
 DB_NAME = 'market.db'
 
+bcrypt = Bcrypt()
+lmanager = LoginManager()
+
 def create_app():
 	app = Flask(__name__)
 	app.config.from_object(Config)
 	db.init_app(app)
+
+	bcrypt.init_app(app)
+	lmanager.init_app(app)
 
 	from app.views import views
 	from app.models import User,Item
