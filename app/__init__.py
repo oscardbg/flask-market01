@@ -28,6 +28,9 @@ def create_app():
 	
 	create_db(app)
 	
+	lmanager.login_view = 'views.show_login'
+	lmanager.login_message_category = 'info'
+
 	admin = Admin(app)
 	admin.add_view(ModelView(User, db.session))
 	admin.add_view(ModelView(Item, db.session))

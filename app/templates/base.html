@@ -19,10 +19,22 @@
                <li><a href="{{ url_for('views.show_market') }}">Market</a></li>
             </ul>
             <ul>
+               {% if current_user.is_authenticated %}
+               <li>
+                  <a href="" class="no-a">
+                     Welcome, {{current_user.username}}</a
+                  >
+               </li>
+               <li>
+                  <a href="" class="no-a">{{ current_user.frt_budget }} </a>
+               </li>
+               <li><a href="{{ url_for('views.logout_page') }}">Logout</a></li>
+               {% else %}
                <li><a href="{{ url_for('views.show_login') }}">Login </a></li>
                <li>
                   <a href="{{ url_for('views.show_register') }}">Register</a>
                </li>
+               {% endif %}
             </ul>
          </nav>
       </header>
