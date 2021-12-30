@@ -1,10 +1,13 @@
-const modal = document.querySelector(".modal");
-const btn = document.querySelector(".info");
-const btnClose = modal.querySelector("button");
+const modals = document.querySelectorAll(".modal");
+const btnsInfo = document.querySelectorAll(".info");
+//const btnsClose = modals.querySelectorAll("button");
 
-btn.addEventListener("click", () => {
-   modal.classList.add("active");
-});
-btnClose.addEventListener("click", () => {
-   modal.classList.remove("active");
+btnsInfo.forEach((btn, index) => {
+   btn.addEventListener("click", () => {
+      modals[index].classList.add("active");
+   });
+
+   modals[index].querySelector("button").addEventListener("click", () => {
+      modals[index].classList.remove("active");
+   });
 });

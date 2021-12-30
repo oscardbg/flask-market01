@@ -4,7 +4,7 @@
 <!-- . -->
 {% block main %}
 <!--  -->
-{% include 'includes/item_modal.html' %}
+
 <h1>Market Webpage</h1>
 <div class="box">
    {% if items %}
@@ -16,13 +16,15 @@
          <p>Options</p>
       </li>
       {% for item in items %}
+      <!--  -->
+      {% include 'includes/item_modal.html' %}
       <li>
          <p>{{ item.name }}</p>
          <p>$ {{ item.price }}</p>
          <p>{{ item.barcode }}</p>
          <p>
-            <span href="" class="opts info">Info</span>
-            <a href="" class="opts pur">Purchase</a>
+            <span class="opts info">Info</span>
+            <span class="opts pur">Purchase</span>
          </p>
       </li>
       {% endfor %}

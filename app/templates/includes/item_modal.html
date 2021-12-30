@@ -1,8 +1,9 @@
 <div class="modal">
    <div class="popup">
-      <h3>Product</h3>
-      <p>prod name</p>
-      <p>prod description</p>
+      <h3>{{ item.name }}</h3>
+      <p>Price: $ {{ item.price }}</p>
+      <p>Barcode: {{ item.barcode }}</p>
+      <p>Description: {{ item.description }}</p>
       <button>Close</button>
    </div>
 </div>
