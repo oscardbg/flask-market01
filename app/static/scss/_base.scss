@@ -99,13 +99,13 @@ nav {
 /*■■■■■■■■■■■■■■■■■■■■■■ Item list */
 .box {
    display: grid;
-   grid-template-columns: 80% 20%;
+   grid-template-columns: 70% 30%;
    grid-gap: 15px;
 }
 .lst-items {
    li {
       display: grid;
-      grid-template-columns: 2fr 1fr 1fr 1fr;
+      grid-template-columns: 2fr 1fr 1fr 0.8fr;
       align-items: center;
       border: 1px solid rgba(#fff, 0.2);
       padding: 5px;
@@ -121,6 +121,9 @@ nav {
          padding: 5px;
          margin-right: 10px;
          cursor: pointer;
+         &:hover {
+            box-shadow: 0 0 0 1px rgba(#fff, 0.8);
+         }
       }
    }
 }
@@ -130,16 +133,29 @@ nav {
    li {
       padding: 5px;
       margin-bottom: 5px;
+      display: flex;
       &:first-child {
          background: #333;
          font-weight: bold;
+      }
+   }
+   .name {
+      flex: 1;
+   }
+   .sell {
+      background: #222;
+      padding: 5px 10px;
+      cursor: pointer;
+      &:hover {
+         box-shadow: 0 0 0 1px rgba(#fff, 0.8);
       }
    }
 }
 
 /*■■■■■■■■■■■■■■■■■■■■■■  */
 .infoModal,
-.buyModal {
+.buyModal,
+.sellModal {
    @extend %modal;
    .popup {
       position: relative;

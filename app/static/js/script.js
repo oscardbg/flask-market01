@@ -1,8 +1,9 @@
 const infoModals = document.querySelectorAll(".infoModal");
 const buyModals = document.querySelectorAll(".buyModal");
+const sellModals = document.querySelectorAll(".sellModal");
 const btnsInfo = document.querySelectorAll(".info");
 const btnsBuy = document.querySelectorAll(".buy");
-//const btnsClose = modals.querySelectorAll("button");
+const btnsSell = document.querySelectorAll(".sell");
 
 btnsInfo.forEach((btn, index) => {
    btn.addEventListener("click", () => {
@@ -21,5 +22,14 @@ btnsBuy.forEach((btn, index) => {
 
    buyModals[index].querySelector(".close").addEventListener("click", () => {
       buyModals[index].classList.remove("active");
+   });
+});
+
+btnsSell.forEach((btn, index) => {
+   btn.addEventListener("click", () => {
+      sellModals[index].classList.add("active");
+   });
+   sellModals[index].querySelector(".close").addEventListener("click", () => {
+      sellModals[index].classList.remove("active");
    });
 });

@@ -1,0 +1,19 @@
+<div class="sellModal">
+   <div class="popup">
+      <h3>Sell Item</h3>
+      <p>{{item.name}}</p>
+      <form method="POST">
+         <p>Are you sure you want to sell {{item.name}} for {{item.price}} ?</p>
+         <div class="actions">
+            <input
+               id="selled_item"
+               name="selled_item"
+               type="hidden"
+               value="{{ item.name }}"
+            />
+            {{ sellForm.submit(class='btnSell') }}
+            <button type="button" class="close">Close</button>
+         </div>
+      </form>
+   </div>
+</div>

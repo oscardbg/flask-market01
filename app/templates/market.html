@@ -5,7 +5,7 @@
 {% block main %}
 <!--  -->
 
-<h1>Market Webpage</h1>
+<h1>Available Products</h1>
 <div class="box">
    {% if items %}
    <ul class="lst-items">
@@ -24,7 +24,7 @@
          <p>{{ item.barcode }}</p>
          <p>
             <span class="opts info">Info</span>
-            <span class="opts buy">Purchase</span>
+            <span class="opts buy">Buy</span>
          </p>
       </li>
       {% endfor %}
@@ -35,6 +35,22 @@
 
    <ul class="lst-buy">
       <li>Owned Items</li>
+      {% if owned %}
+      <!--  -->
+      {% for item in owned %}
+      <!--  -->
+      {% include 'includes/sell_modal.html' %}
+      <li>
+         <p class="name">• {{item.name}}</p>
+         <p><span class="sell">Sell</span></p>
+      </li>
+      {% endfor %}
+      <!--  -->
+      {% else %}
+      <!--  -->
+      <li>No item purchased yet...</li>
+      <!--  -->
+      {% endif %}
    </ul>
 </div>
 {% endblock %}

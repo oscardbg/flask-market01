@@ -14,23 +14,35 @@ def index():
 @login_required
 def show_market():
 	buyForm = BuyItemForm()
+	sellForm = SellItemForm()
 
 	if request.method == 'POST':
+
+		# Item buying code
 		buyed_item = request.form.get('buyed_item')
-		item_obj = Item.query.filter_by(name=buyed_item).first()
-		if item_obj:
-			if current_user.can_purchase(item_obj):
-				item_obj.owner = current_user.id
-				current_user.budget -= item_obj.price
-				db.session.commit()
-				flash(f'Congrats, you bought {item_obj.name} for $ {item_obj.price}', category='success')
+		itemb_obj = Item.query.filter_by(name=buyed_item).first()
+		if itemb_obj:
+			if current_user.can_purchase(itemb_obj):
+				itemb_obj.buy(current_user)
+				flash(f'Congrats, you bought {itemb_obj.name} for $ {itemb_obj.price}', category='success')
 			else:
-				flash(f'Not enough money to buy {item_obj.name}', category='danger')
+				flash(f'Not enough money to buy {itemb_obj.name}', category='danger')
+
+		# Item selling code
+		selled_item = request.form.get('selled_item')
+		items_obj = Item.query.filter_by(name=selled_item).first()
+		if items_obj:
+			if current_user.can_sell(items_obj):
+				items_obj.sell(current_user)
+				flash(f'Congrats, you sold {items_obj.name} back to market', category='success')
+			else:
+				flash(f'Something went wrong trying to sell {items_obj.name}', category='danger')
 	
 		return redirect(url_for('views.show_market'))
 
 	items = Item.query.filter_by(owner=None)
-	return render_template('market.html', items=items, buyForm=buyForm)
+	owned = Item.query.filter_by(owner=current_user.id)
+	return render_template('market.html', items=items, owned=owned, buyForm=buyForm, sellForm=sellForm)
 
 @views.route('/register', methods=['GET','POST'])
 def show_register():
