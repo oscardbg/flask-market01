@@ -1,6 +1,6 @@
 from flask import Blueprint, url_for, redirect, render_template, flash, request
-from app.forms import RegisterForm, Loginform, BuyItemForm, SellItemForm
 from flask_login import login_user, logout_user, login_required, current_user
+from app.forms import RegisterForm, Loginform, BuyItemForm, SellItemForm
 from app.models import Item, User
 from app import db
 
@@ -19,11 +19,17 @@ def show_market():
 		buyed_item = request.form.get('buyed_item')
 		item_obj = Item.query.filter_by(name=buyed_item).first()
 		if item_obj:
-			item_obj.owner = current_user.id
-			current_user.budget -= item_obj.price
-			db.session.commit()
+			if current_user.can_purchase(item_obj):
+				item_obj.owner = current_user.id
+				current_user.budget -= item_obj.price
+				db.session.commit()
+				flash(f'Congrats, you bought {item_obj.name} for $ {item_obj.price}', category='success')
+			else:
+				flash(f'Not enough money to buy {item_obj.name}', category='danger')
 	
-	items = Item.query.all()
+		return redirect(url_for('views.show_market'))
+
+	items = Item.query.filter_by(owner=None)
 	return render_template('market.html', items=items, buyForm=buyForm)
 
 @views.route('/register', methods=['GET','POST'])

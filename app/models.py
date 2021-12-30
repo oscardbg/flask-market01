@@ -31,9 +31,11 @@ class User(db.Model, UserMixin):
 	def check_password_crt(self, req_password):
 		return bcrypt.check_password_hash(self.password_hash, req_password)
 			
-
 	def __str__(self):
 		return f'User: {self.username}'
+
+	def can_purchase(self, item_obj):
+		return self.budget >= item_obj.price
 	
 class Item(db.Model):
 	id = db.Column(db.Integer(), primary_key=True)
