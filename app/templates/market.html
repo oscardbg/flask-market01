@@ -3,18 +3,38 @@
 {% block title %}Store | Market {% endblock %}
 <!-- . -->
 {% block main %}
+<!--  -->
+{% include 'includes/item_modal.html' %}
 <h1>Market Webpage</h1>
-{% if items %}
-<ul class="lst-items">
-   {% for item in items %}
-   <li>
-      <p>{{ item.name }}</p>
-      <p>{{ item.price }}</p>
-      <p>{{ item.description }}</p>
-   </li>
-   {% endfor %} {% else %}
+<div class="box">
+   {% if items %}
+   <ul class="lst-items">
+      <li>
+         <p>Name</p>
+         <p>Price</p>
+         <p>Barcode</p>
+         <p>Options</p>
+      </li>
+      {% for item in items %}
+      <li>
+         <p>{{ item.name }}</p>
+         <p>$ {{ item.price }}</p>
+         <p>{{ item.barcode }}</p>
+         <p>
+            <span href="" class="opts info">Info</span>
+            <a href="" class="opts pur">Purchase</a>
+         </p>
+      </li>
+      {% endfor %}
+   </ul>
+   {% else %}
    <h3>There are no items in the market</h3>
-</ul>
-{% endif %} {% endblock %}
+   {% endif %}
+
+   <ul class="lst-buy">
+      <li>Owned Items</li>
+   </ul>
+</div>
+{% endblock %}
 <!-- . -->
 <!-- . -->
