@@ -1,9 +1,35 @@
-<div class="modal">
+<div class="infoModal">
    <div class="popup">
-      <h3>{{ item.name }}</h3>
+      <h3>Item Information</h3>
+      <p>{{ item.name }}</p>
       <p>Price: $ {{ item.price }}</p>
       <p>Barcode: {{ item.barcode }}</p>
       <p>Description: {{ item.description }}</p>
-      <button>Close</button>
+      <button class="close">Close</button>
+   </div>
+</div>
+
+<div class="buyModal">
+   <div class="popup">
+      <h3>Purchase Item</h3>
+      <p>{{ item.name }}</p>
+      <form method="POST">
+         <p>
+            Are you sure you want to buy {{item.name}} for $ {{item.price}} ?
+         </p>
+         {{ buyForm.hidden_tag() }}
+         <!--  -->
+         <!--  -->
+         <div class="actions">
+            <input
+               id="buyed_item"
+               name="buyed_item"
+               type="hidden"
+               value="{{ item.name }}"
+            />
+            {{ buyForm.submit(class='btnBuy') }}
+            <button type="button" class="close">Close</button>
+         </div>
+      </form>
    </div>
 </div>

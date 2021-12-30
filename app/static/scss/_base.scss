@@ -1,4 +1,14 @@
 /*■■■■■■■■■■■■■■■■■■■■■■ Variables */
+%modal {
+   position: fixed;
+   top: 0;
+   left: 0;
+   width: 100vw;
+   height: 100vh;
+   background: rgba(#000, 0.8);
+   display: none;
+}
+
 /*■■■■■■■■■■■■■■■■■■■■■■ Reset */
 * {
    margin: 0;
@@ -128,20 +138,15 @@ nav {
 }
 
 /*■■■■■■■■■■■■■■■■■■■■■■  */
-.modal {
-   position: fixed;
-   top: 0;
-   left: 0;
-   width: 100vw;
-   height: 100vh;
-   background: rgba(#000, 0.8);
-   display: none;
+.infoModal,
+.buyModal {
+   @extend %modal;
    .popup {
       position: relative;
       top: 20%;
       left: 50%;
       transform: translate(-50%, 0);
-      width: 300px;
+      width: 350px;
       border: 1px solid #fff;
       background: #111;
       p {
@@ -155,7 +160,8 @@ nav {
       text-align: center;
       margin-bottom: 10px;
    }
-   button {
+   .close,
+   input[type="submit"] {
       outline: none;
       border: 1px solid rgba(#fff, 0.4);
       padding: 10px 15px;
@@ -163,7 +169,7 @@ nav {
       font-weight: bold;
       background: #000;
       color: #fff;
-      display: block;
+      display: inline-block;
       margin: 10px auto;
       cursor: pointer;
       &:hover {
@@ -171,11 +177,16 @@ nav {
          color: #000;
       }
    }
+   .actions {
+      text-align: center;
+   }
 }
+/*■■■■■■■■■■■■■■■■■■■■■■  */
+
+/*■■■■■■■■■■■■■■■■■■■■■■  */
 .active {
    display: block;
 }
 
-/*■■■■■■■■■■■■■■■■■■■■■■  */
 /*■■■■■■■■■■■■■■■■■■■■■■  */
 /*■■■■■■■■■■■■■■■■■■■■■■  */

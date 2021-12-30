@@ -1,7 +1,6 @@
-from flask import Blueprint, url_for, redirect, render_template, flash
-from werkzeug.wrappers import request
-from app.forms import RegisterForm, Loginform
-from flask_login import login_user, logout_user, login_required
+from flask import Blueprint, url_for, redirect, render_template, flash, request
+from app.forms import RegisterForm, Loginform, BuyItemForm, SellItemForm
+from flask_login import login_user, logout_user, login_required, current_user
 from app.models import Item, User
 from app import db
 
@@ -11,11 +10,21 @@ views = Blueprint('views',__name__)
 def index():
 	return render_template('index.html')
 
-@views.route('/market')
+@views.route('/market', methods=['GET','POST'])
 @login_required
 def show_market():
+	buyForm = BuyItemForm()
+
+	if request.method == 'POST':
+		buyed_item = request.form.get('buyed_item')
+		item_obj = Item.query.filter_by(name=buyed_item).first()
+		if item_obj:
+			item_obj.owner = current_user.id
+			current_user.budget -= item_obj.price
+			db.session.commit()
+	
 	items = Item.query.all()
-	return render_template('market.html', items=items)
+	return render_template('market.html', items=items, buyForm=buyForm)
 
 @views.route('/register', methods=['GET','POST'])
 def show_register():
